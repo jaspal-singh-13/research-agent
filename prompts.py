@@ -14,9 +14,15 @@ Note:
 """
 
 
-response_gen = """Based on the below information curated from the internet give response to the task. CURRATED INFORMATION also contains the source of the information.
+response_gen = """
+Based on the below information curated from the internet give response to the task. CURRATED INFORMATION also contains the source of the information.
 ### TASK:
 {task}
 
 ### CURRATED INFORMATION:
-{information}"""
+{information}
+
+Note: 
+1. Give output in a string format.
+2. Annotate the final response sentence with its source.
+"""

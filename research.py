@@ -29,6 +29,7 @@ class research:
 
 
     def get_search_queries(self, task):
+        print('creating search queries...')
         search_query_prompt = prompts.search_query_gen.replace("$task", task)
         self.message.append(
             ("human", search_query_prompt)
@@ -51,6 +52,7 @@ class research:
 
     
     def get_final_response(self, task, search_results):
+        print('getting final response...')
         
         response_gen_prompt = prompts.response_gen.format(task= task, information = search_results)
         # print(response_gen_prompt)
@@ -67,11 +69,14 @@ class research:
         self.model_initialization()
         search_queries = self.get_search_queries(self.task)
         search_results = self.internet_search(search_queries)
+        print("*****************************************")
         # print(search_results)
+        print("*****************************************")
+
         response = self.get_final_response(self.task, search_results)
         return response
 
 
 
-research_obj = research(task = "current job market in india")
+research_obj = research(task = "US election 2024 and controversies arround it.")
 print(research_obj.execute())
